@@ -4,12 +4,10 @@ class Author(models.Model):
 	name = models.TextField()
 	origin = models.TextField()
 
-class ISBNManager(models.Manager):
-	def __init__(self,isbn):
-		self.isbn=isbn
+class HorrorManager(models.Manager):
 
 	def get_query_set(self):
-		return super(ISBNManager, self).get_query_set().filter(isbn=self.isbn)
+		return super(HorrorManager, self).get_query_set().filter(genre="horror")
 
 
 class Book(models.Model):
@@ -27,6 +25,7 @@ class Book(models.Model):
 	summary = models.TextField()
 	no_of_pages = models.IntegerField()
 	publisher = models.TextField()
+	horror=HorrorManager()
 	#cover_image - Upload an Image of the cover
 	#no_of_reviews - number of views on the book by people
 	#average_rating - number of stars(x/5)
