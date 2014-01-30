@@ -1,4 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+class Reader(models.Model):
+	user=models.OneToOneField(User)
+	books_read=models.TextField(default=0, blank=True)
+	books_want_to_read=models.TextField(default=0, blank=True)
+	books_reading=models.TextField(default=0, blank=True)	
+
 
 class Author(models.Model):
 	name = models.TextField()
